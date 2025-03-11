@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv"X-UA-Compatible" content="IE=edge">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <title>BudgetBite/PriceList</title>
+    <!-- Link To CSS -->
+     <link rel="stylesheet" href="Price-List.style.css">
+     <!-- Box Icons -->
+     <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <style>
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;900&display=swap');
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+}
+/* Some Variables */
+:root {
+    --green-color: #3cb815;
+    --light-green-color: #c0eb7b;
+    --orange-color: #ff7e00;
+    --light-orange-color: #f75f1d;
+    --text-color: #1a2428;
+    --bg-color: #fff;
+}
+/* Custom Scroll Bar */
+::-webkit-scrollbar {
+    width: 0.5rem;
+    background: var(--light-green-color);
+}
+::-webkit-scrollbar-thumb {
+    width: 0.5rem;
+    background: var(--green-color);
+    border-radius: 5rem;
+}
+section {
+    padding: 4.5rem 0  1.5rem;
+}
+img {
+    width: 100%;
+}
+body {
+    color: var(--text-color);
+}
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-color);
+    box-shadow: 0 8px 11px rgb(14 55 54 / 15%);
+    padding: 20px 100px;
+    transition: 0.5s;
+
+}
+.profile {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.profile img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+.profile span {
+    font-size: 13px;
+    font-weight: 500;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    column-gap: 0.5rem;
+}
+.logo .bx {
+    font-size: 24px;
+    color: var(--orange-color);
+}
+.navbar {
+    display: flex;
+    column-gap: 0.5rem;
+}
+.navbar {
+    justify-content:space-evenly;
+    margin: 0 20px; /*0 20px*/
+}
+.navbar a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+}
+.navbar a:hover,
+.navbar .home-active {
+    background: var(--green-color);
+    border-radius: 5rem;
+    color: var(--bg-color);
+    transition: background 0.5s;
+}
+#menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10001;
+    display: none;
+}
+/* Making Responsive */
+@media (max-width: 1080px) {
+    header {
+        padding: 18px 60px;
+    }
+    .home-text {
+        padding: 0 100px;
+    }
+    .container img {
+        right: 100px; 
+    }
+}
+@media (max-width: 991px) {
+    header{
+        padding: 18px 4%;
+    } 
+    section {
+        padding: 50px 4%;
+    }
+    .home-text h1 {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 852px) {
+    header {
+        padding: 12px 4%;
+    }
+    #menu-icon {
+        display: initial;
+    }
+    .navbar {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-color);
+        box-shadow: 4px 4px 0 4px rgb(14 55 54 / 15%);
+        transition: 0.2s all linear;
+        text-align: left;
+    }
+    .navbar a{
+        position: relative;
+        font-size: 1.1em;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 40px;
+    }
+    .navbar a:hover,
+    .navbar .home-active{
+        border-radius: 00.5rem;
+        color: var(--bg-color);
+    }
+    .navbar.active {
+        top: 100%;
+    }
+    .container img {
+        width: 390px;
+    }
+}
+@media (max-width: 712px) {
+    .container img {
+        right: 20px;
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 642px) {
+    .container img {
+        right: 0;
+        width: 370px;
+    }
+}
+@media (max-width: 546px) {
+    .container img {
+        right: 0;
+        width: 370px;
+        height: 820px;
+        object-fit: contain;
+    }
+}
+@media (max-width: 370px) {
+    .logo{
+        font-size: 1rem;
+    }
+    .profile img {
+        width: 30px;
+        height: 30px;
+    }
+    .profile span {
+        font-size: 10px;
+    }
+}
+.logo {
+    width: 200px;
+    height: 50px;
+}
+*{
+    box-sizing: border-box;
+}
+body {
+    background: url(img/tech.jpg);
+    background-size: cover;
+    font-family: arial;
+    font-size: 13px;
+    margin: 0;
+}
+input, select, button {
+    font-family: arial;
+    font-size: 14px;
+}
+h3, h4 {
+    margin: 0;
+}
+img {
+    max-width: 100%;
+}
+:focus {
+    outline: none;
+}
+.wrapper {
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.inner {
+    padding: 20px;
+    background: #fff;
+    max-width: 850px;
+    margin: auto;
+    display: flex;
+}
+.inner .image-holder {
+    width: 50%;
+}
+.inner form {
+    width: 50%;
+    padding-top: 36px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+.inner h3 {
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+.form-group {
+    display: flex;
+}
+.form-group input {
+    width: 50%;
+}
+.form-group input:first-child {
+    margin-right: 25px;
+}
+.form-wrapper {
+    position: relative;
+}
+.form-control {
+    border: 1px solid #333;
+    border: none;
+    border-bottom: 1px solid #333;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding-right: 0;
+    margin-bottom: 25px;
+}
+select {
+    cursor: pointer;
+    color: gray;
+}
+select option [value=""][disabled]{
+    display: none;
+}
+button {
+    border: none;
+    width: 164px;
+    height: 51px;
+    margin: auto;
+    margin-top: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+    background: transparent;
+    font-size: 15px;
+    color: #fff;
+}
+button:hover {
+    background: var(--green-color);
+}
+@media (max-width: 767px) {
+    inner {
+        display: block;
+    }
+    .inner .image-holder {
+        width: 100%;
+    }
+    .inner form {
+        width: 100%;
+        padding: 40px 0 30px;
+    }
+    button {
+        margin-top: 2px;
+    }
+}
+
+.container {
+
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping of items */
+    justify-content: space-between; /* Space between items */
+    overflow-y: scroll;
+}
+
+.box {
+    background-color: #fff; /* White background for boxes */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding inside boxes */
+    margin: 10px; /* Margin around boxes */
+    flex: 1 1 calc(30% - 20px); /* Flex-grow, flex-shrink, and base width for 3 boxes */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center text */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .box {
+        flex: 1 1 calc(45% - 20px); /* Change to 2 boxes on mobile */
+    }
+}
+
+table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 20px; /* Space above the table */
+}
+
+th, td {
+    padding: 10px; /* Padding inside table cells */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Bottom border for rows */
+}
+
+th {
+    background-color: #6cf387; /* Light gray background for header */
+    color: var(--text-color); /* Dark color for header text */
+}
+
+tr:hover {
+    background-color:#fff ; /* Highlight row on hover */
+}
+
+
+
+.lrn-container {
+    max-width: 600px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container */
+    background-color: #fff; /* White background for the container */
+    padding: 20px; /* Padding inside the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    
+}
+.container-search {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 200px;
+    margin-right: 100px; /* Space below the search bar */
+}
+input[type="text"] {
+    width: 100%; /* Full width for the input */
+    padding: 10px; /* Padding inside the input */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+button {
+    padding: 10px 15px; /* Padding inside the button */
+    margin-left: 10px; /* Space between input and button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: rgb(0, 111, 35); /* Blue background */
+    color: white; /* White text */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+.search-bar {
+    display: flex;
+    flex-direction: row;/* Use flexbox for layout */
+}
+.TitlePrice h1 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 500px;
+    margin-right: 100px; 
+}
+  </style>
+  <script>
+  function filterIngredients() {
+    // Get the value of the search input
+    const keyword = document.getElementById('keyword').value.toLowerCase();
+    
+    // Get all tables with the class 'ingredient-table'
+    const tables = document.querySelectorAll('table[id^="ingredient-table"]');
+
+    // Loop through each table
+    tables.forEach(table => {
+        const rows = table.getElementsByTagName('tr');
+
+        // Loop through all table rows (except the first one, which is the header)
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            // Check if the ingredient name matches the search keyword
+            if (cells[0].textContent.toLowerCase().includes(keyword)) {
+                rows[i].style.display = ''; // Show the row
+            } else {
+                rows[i].style.display = 'none'; // Hide the row
+            }
+        }
+    });
+}
+
+function checkEnter(event) {
+    if (event.key === 'Enter') {
+        filterIngredients(); // Call the filter function on Enter key press
+    }
+}
+  </script>
+  </head>
+  <body>
+  
+    <header>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="img/title.png" alt="">
+        </div>
+        <!-- Nav List -->
+        <ul class="navbar">
+            <li><a href="https://ppppjjjjsss.github.io/BudgetBites/home/index.html">Home</a></li>
+            <li><a href="https://ppppjjjjsss.github.io/BudgetBites/home/index.html#categories">Categories</a></li>
+            <li><a href="https://ppppjjjjsss.github.io/BudgetBites/home/index.html#about">About</a></li>
+            <li><a href="https://ppppjjjjsss.github.io/BudgetBites/home/index.html#customers">Customers</a></li>
+            <li><a href="https://ppppjjjjsss.github.io/BudgetBites/home/Meals/index.html" >Meals</a></li>  
+            <li><a href="https://ppppjjjjsss.github.io/BudgetBites/home/Meals/Price-List/index.html" class="home-active">Price List</a></li>
+        </ul>
+
+        <!-- Profile -->
+        <div class="profile">
+            <img src="img/profile.jpg" alt=""> 
+            <span>Profile </span>
+            <i class='bx bx-caret-down' ></i>
+        </div>
+    </header>
+        <section class="container-search">
+            <div class="search-bar">
+                <input type="text" id="keyword" placeholder="Search..." onkeyup="checkEnter(event)" />
+                <button id="search-button" type="button" onclick="filterIngredients()">Enter</button>
+            </div>
+        </section>
+        <div class="TitlePrice">
+        <h1>MANDAUE CITY PUBLIC MARKET PRICES</h1>
+        </div>
+    <div class="container">
+
+        <div class="box">
+            <h1>FRUITS</h1>
+            <table id="ingredient-table1">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apple (Sml.)</td>
+                        <td>₱15.00/pc</td>
+                    </tr>
+                    <tr>
+                        <td>Apple (L)</td>
+                        <td>₱20.00/pc</td>
+                    </tr>
+                    <tr>
+                        <td>Bangan/Lakatan</td>
+                        <td>₱85.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Buongon</td>
+                        <td>₱70.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Camote</td>
+                        <td>₱55.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Grapes</td>
+                        <td>₱180.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Guyabano</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Kardaba</td>
+                        <td>₱27.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Mangga (Green)</td>
+                        <td>₱150.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Mangga (Yellow)</td>
+                        <td>₱150.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Melon</td>
+                        <td>₱100.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Mundo</td>
+                        <td>₱100.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Nangka</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Orange</td>
+                        <td>₱15.00/pc</td>
+                    </tr>
+                    <tr>
+                        <td>Papaya</td>
+                        <td>₱50.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pinya</td>
+                        <td>₱65.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Singkamas</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Tundan (L)</td>
+                        <td>₱35.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tundan (S)</td>
+                        <td>₱35.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Watermelon</td>
+                        <td>₱60.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Rambutan</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Lansones</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Sweet Corn</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Avocado</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Lemon (Citrus)</td>
+                        <td>₱15.00/pc</td>
+                    </tr>
+                    <tr>
+                        <td>Guava</td>
+                        <td>₱100.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pears</td>
+                        <td>₱25.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Banana (Green)</td>
+                        <td>₱15.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Dragon Fruit</td>
+                        <td>₱180.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Mangosteen</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Durian</td>
+                        <td>₱----</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <h1>VEGETABLES</h1>
+            <table  id="ingredient-table2">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alugbate</td>
+                        <td>₱75.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Ampalaya</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Baguio Beans</td>
+                        <td>₱70.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Batong</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Cabbage</td>
+                        <td>₱60.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Calamansi</td>
+                        <td>₱70.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Carrots</td>
+                        <td>₱150.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Cauliflower</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chicharos</td>
+                        <td>₱500.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Cucumber</td>
+                        <td>₱60.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Eggplant</td>
+                        <td>₱100.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Gabi</td>
+                        <td>₱90.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Garlic</td>
+                        <td>₱130.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Ginger</td>
+                        <td>₱130.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Green Bell Pepper</td>
+                        <td>₱450.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Okra</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Onion Leaves</td>
+                        <td>₱170.00/bundle</td>
+                    </tr>
+                    <tr>
+                        <td>Pechay</td>
+                        <td>₱70.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Potato</td>
+                        <td>₱160.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Raddish</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Red Bell Pepper</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Red Onion</td>
+                        <td>₱160.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Red Squash</td>
+                        <td>₱36.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>White Squash</td>
+                        <td>₱30.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tomato</td>
+                        <td>₱90.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>White Onion</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Brocolli</td>
+                        <td>₱260.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Singkamas</td>
+                        <td>₱90.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Saluyot</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Kamunggay</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Sayote</td>
+                        <td>₱20.00/pc</td>
+                    </tr>
+                    <tr>
+                        <td>Chinese Kangkong</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Sikwa</td>
+                        <td>₱90.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Sweet Corn</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Camote Tops</td>
+                        <td>₱50.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lettuce</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Sili Ispada</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Taogi</td>
+                        <td>₱50.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Sili kolikot</td>
+                        <td>₱500.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Sili Labuyo</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Eba</td>
+                        <td>₱40.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>opo Kalabasa</td>
+                        <td>₱50.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Young corn</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tangad</td>
+                        <td>₱70.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Turmeric</td>
+                        <td>₱60.00/kl</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <h1>SEAFOODS</h1>
+            <table  id="ingredient-table3">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ampalaya</td>
+                        <td>350.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Aininikad</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bakase</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bangus</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Barilis</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Barungoy</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bawo</td>
+                        <td>₱350.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bilong-bilong</td>
+                        <td>₱280.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bodboron (B)</td>
+                        <td>₱220.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bodboron (S)</td>
+                        <td>₱220.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bolinao</td>
+                        <td>₱140.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Balintong</td>
+                        <td>₱220.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Dalagang Bukid</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Bayang</td>
+                        <td>₱220.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Hinok (L)</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Hinok (S)</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Karabalyas</td>
+                        <td>₱260.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Katambak</td>
+                        <td>₱500.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Kaharo</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Kiros</td>
+                        <td>₱350.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Kitong</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Kogeta</td>
+                        <td>₱220.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>lagaw</td>
+                        <td>₱40.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lambay</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lato</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lipti</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lumayangan</td>
+                        <td>₱180.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lapu-lapu</td>
+                        <td>₱500.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lupoy</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Mahinlo</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Mamsa</td>
+                        <td>₱500.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Hawol</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Dogso</td>
+                        <td>₱500.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Kubotan</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Maya-maya</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Molmol</td>
+                        <td>₱350.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Nukos</td>
+                        <td>₱480.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Oyap</td>
+                        <td>₱180./kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pakol</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pandawan</td>
+                        <td>₱240.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pampano</td>
+                        <td>450.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pasayan</td>
+                        <td>₱380.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pugapo</td>
+                        <td>₱600.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Rumpi</td>
+                        <td>₱350.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Solid</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Seaweeds</td>
+                        <td>₱50.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tabangko</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tabas</td>
+                        <td>₱240.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tahong (Large)</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tamarong</td>
+                        <td>₱300.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tangige</td>
+                        <td>₱500.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tarorot</td>
+                        <td>₱320.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tilapia</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tikab</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Timbungan</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tulingan</td>
+                        <td>₱280.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tuloy</td>
+                        <td>₱60.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tuna</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Ubod</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Yellow Fin</td>
+                        <td>₱300.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Silay</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Scallope</td>
+                        <td>₱160.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>White Marlin</td>
+                        <td>₱280.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Boriring</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Punaw</td>
+                        <td>₱160.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Eto</td>
+                        <td>₱130.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tabogok</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Kubal-kubal</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Litob</td>
+                        <td>₱220.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Buco-buco</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Danggit</td>
+                        <td>₱300.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bontogon</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Salmon</td>
+                        <td>₱180.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Buli-buli</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Lukot</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Malasugi</td>
+                        <td>₱---</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+
+
+        <div class="box">
+            <h1>DRIED FISH</h1>
+            <table id="ingredient-table4">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Danggit boneless</td>
+                        <td>₱1000.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bolinao Ball (A) Ballace</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bolinao (Bawodnon)</td>
+                        <td>₱600.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bodboron Pinikas</td>
+                        <td>₱380.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Squid (A)</td>
+                        <td>₱1300.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Katambak</td>
+                        <td>₱380.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Sapsap/ Potpot</td>
+                        <td>₱340.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tuloy/ Tamban</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Hipon</td>
+                        <td>₱90.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bodboron Tibuok</td>
+                        <td>₱320.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Anduhaw</td>
+                        <td>₱-----</td>
+                    </tr>
+                    <tr>
+                        <td>Tamarong Pinikas</td>
+                        <td>₱380.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tikab</td>
+                        <td>₱320.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tinabal</td>
+                        <td>₱300.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tamarong Tibuok</td>
+                        <td>₱360.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Amahong</td>
+                        <td>₱100.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Ginamos</td>
+                        <td>₱100.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lagaw</td>
+                        <td>₱-----</td>
+                    </tr>
+                    <tr>
+                        <td>Karaho</td>
+                        <td>₱300.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Silay</td>
+                        <td>₱340.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Tarorot</td>
+                        <td>₱1000.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lawihan</td>
+                        <td>₱360.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pogabo</td>
+                        <td>₱380.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Redsal</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lawlaw</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Hasa-Hasa</td>
+                        <td>₱340.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Ginamos Puti</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Dayok/ Botelya</td>
+                        <td>₱180.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Hawol-hawol</td>
+                        <td>₱220.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Lupoy</td>
+                        <td>₱250.00/kl</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <h1>MEAT</h1>
+            <table id="ingredient-table5">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Beef, Lean Meat</td>
+                        <td>₱400.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Beef, Liver</td>
+                        <td>₱180.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Beef, Ribs, w/Bones</td>
+                        <td>₱340.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chorizo</td>
+                        <td>₱25.00/doz</td>
+                    </tr>
+                    <tr>
+                        <td>Ginaling</td>
+                        <td>₱340.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Goat Meat Chevon</td>
+                        <td>₱550.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Frozen Meat</td>
+                        <td>₱230.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pork, Lean Meat</td>
+                        <td>₱340.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pork, Liver</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Pork, Pata Front</td>
+                        <td>₱280.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Skinless Chorizo</td>
+                        <td>₱25.00/doz</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Back Bones</td>
+                        <td>₱140.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Blood</td>
+                        <td>₱30.00</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Feet</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Head</td>
+                        <td>₱40.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Hotdog</td>
+                        <td>₱45.00/pack</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Intestine</td>
+                        <td>₱120.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Liver</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Neck</td>
+                        <td>₱140.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Thigh</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Chicken Wings</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Dressed Chicken Broiler (Whole)</td>
+                        <td>₱200.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Dressed Chicken Native</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Drumstick</td>
+                        <td>₱200.00/doz</td>
+                    </tr>
+                    <tr>
+                        <td>Longanisa</td>
+                        <td>₱45.00/doz</td>
+                    </tr>
+                    <tr>
+                        <td>Lumpia</td>
+                        <td>₱25.00/pack</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+
+
+        <div class="box">
+            <h1>RICE, CORN & CEREALS</h1>
+            <table  id="ingredient-table6">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dona Conchita (O)</td>
+                        <td>₱60.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Dona Conchita (B)</td>
+                        <td>₱58.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Excellent</td>
+                        <td>₱54.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Jasmine</td>
+                        <td>₱54.00</td>
+                    </tr>
+                    <tr>
+                        <td>Fancy Rice</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Liberty</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Ganador</td>
+                        <td>₱350.00</td>
+                    </tr>
+                    <tr>
+                        <td>NFA</td>
+                        <td>₱280.00</td>
+                    </tr>
+                    <tr>
+                        <td>Lion Ivory</td>
+                        <td>₱220.00</td>
+                    </tr>
+                    <tr>
+                        <td>Lion King</td>
+                        <td>₱220.00</td>
+                    </tr>
+                    <tr>
+                        <td>Princess Mia</td>
+                        <td>₱140.00</td>
+                    </tr>
+                    <tr>
+                        <td>Premium Prade</td>
+                        <td>₱220.00</td>
+                    </tr>
+                    <tr>
+                        <td>Red Rice</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Broken Ganador</td>
+                        <td>₱220.00</td>
+                    </tr>
+                    <tr>
+                        <td>Champion</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Wowowee</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Palawan</td>
+                        <td>₱52.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>White Corn</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Premium Corn</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Lotus #14</td>
+                        <td>₱43.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Kitong</td>
+                        <td>₱400.00</td>
+                    </tr>
+                    <tr>
+                        <td>Kogeta</td>
+                        <td>₱220.00</td>
+                    </tr>
+                    <tr>
+                        <td>lagaw</td>
+                        <td>₱40.00</td>
+                    </tr>
+                    <tr>
+                        <td>Lambay</td>
+                        <td>₱400.00</td>
+                    </tr>
+                    <tr>
+                        <td>Lato</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Lipti</td>
+                        <td>₱400.00</td>
+                    </tr>
+                    <tr>
+                        <td>Lumayangan</td>
+                        <td>₱180.00</td>
+                    </tr>
+                    <tr>
+                        <td>Lapu-lapu</td>
+                        <td>₱500.00</td>
+                    </tr>
+                    <tr>
+                        <td>Lupoy</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Mahinlo</td>
+                        <td>₱400.00</td>
+                    </tr>
+                    <tr>
+                        <td>Mamsa</td>
+                        <td>₱500.00</td>
+                    </tr>
+                    <tr>
+                        <td>Hawol</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Dogso</td>
+                        <td>₱500.00</td>
+                    </tr>
+                    <tr>
+                        <td>Kubotan</td>
+                        <td>₱250.00</td>
+                    </tr>
+                    <tr>
+                        <td>Maya-maya</td>
+                        <td>₱400.00</td>
+                    </tr>
+                    <tr>
+                        <td>Molmol</td>
+                        <td>₱350.00</td>
+                    </tr>
+                    <tr>
+                        <td>Nukos</td>
+                        <td>₱480.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oyap</td>
+                        <td>₱180.00</td>
+                    </tr>
+                    <tr>
+                        <td>Pakol</td>
+                        <td>₱250.00</td>
+                    </tr>
+                    <tr>
+                        <td>Pandawan</td>
+                        <td>₱240.00</td>
+                    </tr>
+                    <tr>
+                        <td>Pampano</td>
+                        <td>450.00</td>
+                    </tr>
+                    <tr>
+                        <td>Pasayan</td>
+                        <td>₱380.00</td>
+                    </tr>
+                    <tr>
+                        <td>Pugapo</td>
+                        <td>₱600.00</td>
+                    </tr>
+                    <tr>
+                        <td>Rumpi</td>
+                        <td>₱350.00</td>
+                    </tr>
+                    <tr>
+                        <td>Solid</td>
+                        <td>₱250.00</td>
+                    </tr>
+                    <tr>
+                        <td>Seaweeds</td>
+                        <td>₱50.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tabangko</td>
+                        <td>₱250.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tabas</td>
+                        <td>₱240.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tahong (Large)</td>
+                        <td>₱120.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tamarong</td>
+                        <td>₱300.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tangige</td>
+                        <td>₱500.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tarorot</td>
+                        <td>₱320.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tilapia</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tikab</td>
+                        <td>₱250.00</td>
+                    </tr>
+                    <tr>
+                        <td>Timbungan</td>
+                        <td>₱400.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tulingan</td>
+                        <td>₱280.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tuloy</td>
+                        <td>₱60.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tuna</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Ubod</td>
+                        <td>₱250.00</td>
+                    </tr>
+                    <tr>
+                        <td>Yellow Fin</td>
+                        <td>₱300.00</td>
+                    </tr>
+                    <tr>
+                        <td>Silay</td>
+                        <td>₱250.00</td>
+                    </tr>
+                    <tr>
+                        <td>Scallope</td>
+                        <td>₱160.00</td>
+                    </tr>
+                    <tr>
+                        <td>White Marlin</td>
+                        <td>₱280.00</td>
+                    </tr>
+                    <tr>
+                        <td>Boriring</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Punaw</td>
+                        <td>₱160.00</td>
+                    </tr>
+                    <tr>
+                        <td>Eto</td>
+                        <td>₱130.00</td>
+                    </tr>
+                    <tr>
+                        <td>Tabogok</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Kubal-kubal</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Litob</td>
+                        <td>₱220.00</td>
+                    </tr>
+                    <tr>
+                        <td>Buco-buco</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Danggit</td>
+                        <td>₱300.00</td>
+                    </tr>
+                    <tr>
+                        <td>Bontogon</td>
+                        <td>₱400.00</td>
+                    </tr>
+                    <tr>
+                        <td>Salmon</td>
+                        <td>₱180.00</td>
+                    </tr>
+                    <tr>
+                        <td>Buli-buli</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Lukot</td>
+                        <td>₱200.00</td>
+                    </tr>
+                    <tr>
+                        <td>Malasugi</td>
+                        <td>₱---</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+
+        <div class="box">
+            <h1>BASIC NECESSITIES</h1>
+            <table  id="ingredient-table7">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Senorita Sardines (Green)</td>
+                        <td>₱26.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Senorita Sardines (Red)</td>
+                        <td>₱26.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>CONDENSADA</td>
+                    </tr>
+                    <tr>
+                        <td>Angel 380ml</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Carnation 300ml</td>
+                        <td>₱48.00</td>
+                    </tr>
+                    <tr>
+                        <td>Doreen 300ml</td>
+                        <td>₱45.00</td>
+                    </tr>
+                    <tr>
+                        <td>Liberty 300ml</td>
+                        <td>₱48.00</td>
+                    </tr>
+                    <tr>
+                        <td>EVAPORATED FILLED</td>
+                    </tr>
+                    <tr>
+                        <td>Alpine cream 370ml</td>
+                        <td>₱65.00</td>
+                    </tr>
+                    <tr>
+                        <td>Birch Tree 33g</td>
+                        <td>₱78.00</td>
+                    </tr>
+                    <tr>
+                        <td>Carnation 370ml</td>
+                        <td>₱35.00</td>
+                    </tr>
+                    <tr>
+                        <td>EVAPORADA</td>
+                    </tr>
+                    <tr>
+                        <td>Alaska Evaporada</td>
+                        <td>₱32.00</td>
+                    </tr>
+                    <tr>
+                        <td>Angel Evaporada</td>
+                        <td>₱36.00</td>
+                    </tr>
+                    <tr>
+                        <td>Bear Brand (B)</td>
+                        <td>₱78.00</td>
+                    </tr>
+                    <tr>
+                        <td>COFFEE</td>
+           
+                    </tr>
+                    <tr>
+                        <td>Blanca 30g</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Great Taste 30g</td>
+                        <td>₱90.00</td>
+                    </tr>
+                    <tr>
+                        <td>Nestle caffe latte 29g</td>
+                        <td>₱90.00---</td>
+                    </tr>
+                    <tr>
+                        <td>Nestle Classic 50g </td>
+                        <td>₱44.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Nestle Classic 25g</td>
+                        <td>₱30.00</td>
+                    </tr>
+                    <tr>
+                        <td>DETERGENT/LAUNDRY SOAP</td>
+                    </tr>
+                    <tr>
+                        <td>Perla (W,B) in.</td>
+                        <td>52.00</td>
+                    </tr>
+                    <tr>
+                        <td>Cathy Laundry</td>
+                        <td>15.00</td>
+                    </tr>
+                    <tr>
+                        <td>INSTANT NOODLES</td> 
+                    </tr>
+                    <tr>
+                        <td>LuckyMe (Beef)</td>
+                        <td>₱10.00</td>
+                    </tr>
+                    <tr>
+                        <td>LuckyMe (Chicken)</td>
+                        <td>₱10.00</td>
+                    </tr>
+                    <tr>
+                        <td>SALT (IODZED-REFINED)</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Local Salt</td>
+                        <td>₱12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Salt (Iodized)</td>
+                        <td>₱40.00</td>
+                    </tr>
+                    <tr>
+                        <td>Canton (kl)</td>
+                        <td>₱170.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Longi kl.</td>
+                        <td>₱370.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Miki kl.</td>
+                        <td>₱40.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bihon Red</td>
+                        <td>₱100.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bihon Green</td>
+                        <td>₱90.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>Bihon Yellow</td>
+                        <td>₱80.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>PRIME COMMODITIES</td>
+                    </tr>
+                    <tr>
+                        <td>All Purpose Flour</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>Hard Flour kl.</td>
+                        <td>₱---</td>
+                    </tr>
+                    <tr>
+                        <td>HArd FLour 1st Class</td>
+                        <td>₱45.00/kl</td>
+                    </tr>
+                    <tr>
+                        <td>PROCESSES & CANNED PORK</td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Chinese Luncheon</td>
+                        <td>₱110.00</td>
+                    </tr>
+                    <tr>
+                        <td>MEAT LOAF</td>
+                    
+                    </tr>
+                    <tr>
+                        <td>Argentina 150g</td>
+                        <td>₱39.00</td>
+                    </tr>
+                    <tr>
+                        <td>555 150g</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>BEEF LOAF</td>
+                    </tr>
+                    <tr>
+                        <td>Holiday 160g</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Purefoods 210g (CB)</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>CORNEDE BEEF</td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Argentina 150g</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Purefoods Star 150g</td>
+                        <td>₱105.00</td>
+                    </tr>
+                    <tr>
+                        <td>VINEGAR</td>
+                    </tr>
+                    <tr>
+                        <td>Datu Puti White 200ml</td>
+                        <td>₱10.00</td>
+                    </tr>
+                    <tr>
+                        <td>Silver Swan White 200ml</td>
+                        <td>₱10.00</td>
+                    </tr>
+                    <tr>
+                        <td>Patis (pouch)</td>
+                        <td>₱10.00</td>
+                    </tr>
+                    <tr>
+                        <td>Datu Puti 200ml</td>
+                        <td>₱10.00</td>
+                    </tr>
+                    <tr>
+                        <td>Rufina Patis 325ml</td>
+                        <td>₱-----</td>
+                    </tr>
+                    <tr>
+                        <td>Camel 380ml</td>
+                        <td>₱12.00</td>
+                    </tr>
+                    <tr>
+                        <td>Vinegar/Camel 200ml</td>
+                        <td>₱12.00</td>
+                    </tr>
+                    <tr>
+                        <td>TOILET SOAP</td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Safeguard White 25g</td>
+                        <td>₱20.00</td>
+                    </tr>
+                    <tr>
+                        <td>Safeguard White 60g</td>
+                        <td>₱28.00</td>
+                    </tr>
+                    <tr>
+                        <td>Safeguard White B</td>
+                        <td>₱40.00</td>
+                    </tr>
+                    <tr>
+                        <td>Safeguard White 135g</td>
+                        <td>₱50.00</td>
+                    </tr>
+                    <tr>
+                        <td>DRY GOODS</td>
+                  
+                    </tr>
+                    <tr>
+                        <td>Brown Sugar</td>
+                        <td>₱75.00</td>
+                    </tr>
+                    <tr>
+                        <td>White Sugar</td>
+                        <td>₱80.00</td>
+                    </tr>
+                    <tr>
+                        <td>Flour kl. All Purpose</td>
+                        <td>₱60.00</td>
+                    </tr>
+                    <tr>
+                        <td>Flour kl. All Ordinary</td>
+                        <td>₱45.00</td>
+                    </tr>
+                    <tr>
+                        <td>Kinugay kl.</td>
+                        <td>₱95.00</td>
+                    </tr>
+                    <tr>
+                        <td>Monggo kl.</td>
+                        <td>₱80.00</td>
+                    </tr>
+                    <tr>
+                        <td>Oil (lapad)</td>
+                        <td>₱27.00</td>
+                    </tr>
+                    <tr>
+                        <td>CHICKEN EGGS: FOREIGN BREEDS</td>
+                    </tr>
+                    <tr>
+                        <td>Small egg doz</td>
+                        <td>₱90.00</td>
+                    </tr>
+                    <tr>
+                        <td>Medium  egg doz</td>
+                        <td>₱102.00</td>
+                    </tr>
+                    <tr>
+                        <td>large  egg doz</td>
+                        <td>₱108.00</td>
+                    </tr>
+                    <tr>
+                        <td>Extra large eggs doz</td>
+                        <td>₱114.00</td>
+                    </tr>
+                    <tr>
+                        <td>Native Eggs pc.</td>
+                        <td>₱----</td>
+                    </tr>
+                    <tr>
+                        <td>Peewee pc</td>
+                        <td>₱6.50</td>
+                    </tr>
+                    <tr>
+                        <td>Quail eggs pc</td>
+                        <td>₱2.50</td>
+                    </tr>
+                    <tr>
+                        <td>Salted Eggs pc.
+                        <td>₱25.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+    </div>
+   
+
+    <script src="Price-List.script.js"></script>
+</body>
+</html>
